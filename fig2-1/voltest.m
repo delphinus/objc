@@ -1,4 +1,5 @@
-#import <Foundation/Foundation.h>
+#import <Foundation/NSObject.h>
+#import <stdio.h>
 
 @interface Volume : NSObject
 {
@@ -15,7 +16,8 @@
 @implementation Volume
 - (id)initWithMin: (int) a max: (int)b step: (int)s
 {
-    if ((self = [super init]) != nil) {
+    self = [super init];
+    if (self != nil) {
         val = min = a;
         max = b;
         step = s;
@@ -26,7 +28,7 @@
 - (int)value
 {
     return val;
-    }
+}
 
 - (id)up
 {
@@ -50,12 +52,12 @@ int main(void)
     v = [[Volume alloc] initWithMin:0 max:10 step:2];
     w = [[Volume alloc] initWithMin:0 max:9 step:3];
     [v up];
-    NSLog("%d %d\n", [v value], [w value]);
+    NSLog(@"%d %d\n", [v value], [w value]);
     [v up];
     [w up];
-    NSLog("%d %d\n", [v value], [w value]);
+    NSLog(@"%d %d\n", [v value], [w value]);
     [v down];
     [w down];
-    NSLog("%d %d\n", [v value], [w value]);
+    NSLog(@"%d %d\n", [v value], [w value]);
     return 0;
 }
